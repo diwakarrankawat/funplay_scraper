@@ -15,22 +15,34 @@ def read_urls_file():
     return urls_data
 
 
+def check_golden_key():
+    try:
+        with open('key.txt') as fl:
+            golden_key = fl.read().strip()
+    except:
+        golden_key = None
+    return golden_key
+
+
 def scraper():
     urls_data = read_urls_file()
-    data = Data(urls_data).worker()
+    golden_key = check_golden_key()
+    data = Data(urls_data, golden_key).worker()
     return data
 
 
 def uploader(data):
     sheet = google_sheets.upload_data([
         [
+            data[d]['title'],
             data[d]['servername'],
             data[d]['amount'],
             data[d]['price'],
             data[d]['average'],
             data[d]['time'],
         ] for d in data
-    ], 'stocks-data')
+        # ], 'stocks-data')
+    ], 'test')
     print('DATA UPLOADED AT: {}'.format(sheet))
 
 

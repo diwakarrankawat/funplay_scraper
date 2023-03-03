@@ -16,9 +16,9 @@ def upload_data(data, sheet):
         spd.values_clear('A1:Z100')
     except Exception as e:
         spd = client.create(sheet)
-        spd.share(value=None, role='writer', perm_type='anyone')
-    spd.sheet1.append_row(["Server Name", "Stock", "Total Price",
+    spd.sheet1.append_row(["Title", "Server Name", "Stock", "Total Price",
                            "Avg. Price", "Updated At"])
+    spd.share(value=None, role='writer', perm_type='anyone')
     spd.sheet1.append_rows(data)
     return spd.url
 

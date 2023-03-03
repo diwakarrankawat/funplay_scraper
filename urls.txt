@@ -1,1 +1,4 @@
 https://funpay.com/en/chips/76/, 2,3,4
+https://funpay.com/en/chips/173/, 2,3,4
+https://funpay.com/en/chips/9/, 1
+https://funpay.com/en/chips/103/, 1,2,3
