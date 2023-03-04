@@ -32,6 +32,8 @@ class Data:
                     amount = item.select_one(
                         Selectors.amount).text.strip().replace(' ', '')
                     try:
+                        amount = ''.join(
+                            [n for n in amount if n.isdigit() or n == '.'])
                         amount = int(amount)
                     except:
                         pass
